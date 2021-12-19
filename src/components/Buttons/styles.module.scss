@@ -1,0 +1,19 @@
+.buttons {
+  display: flex;
+  border-top: 1px solid black;
+}
+
+.item {
+  width: 100%;
+  padding: 12px 0;
+  background: none;
+  border: none;
+  border-left: 1px solid black;
+  font-family: Roboto;
+  font-size: 18px;
+  line-height: 21px;
+
+  &:first-child {
+    border-left: none;
+  }
+}

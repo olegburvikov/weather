@@ -1,21 +1,21 @@
-import stylesBlockLocations from "./styles.module.scss";
+import stylesLocations from "./styles.module.scss";
 
 export default function BlockLocations() {
   return (
-    <div className={stylesBlockLocations.block}>
-      <div className={stylesBlockLocations.text}>Added Locations:</div>
-      <ul className={stylesBlockLocations.locations}>
-        <li className={stylesBlockLocations.item}>Bali</li>
-        <li className={stylesBlockLocations.item}>Bali</li>
-        <li className={stylesBlockLocations.item}>Bali</li>
-        <li className={stylesBlockLocations.item}>Bali</li>
-        <li className={stylesBlockLocations.item}>Bali</li>
-        <li className={stylesBlockLocations.item}>Bali</li>
-        <li className={stylesBlockLocations.item}>Bali</li>
-        <li className={stylesBlockLocations.item}>Bali</li>
-        <li className={stylesBlockLocations.item}>Bali</li>
-        <li className={stylesBlockLocations.item}>Bali</li>
-        <li className={stylesBlockLocations.item}>Bali</li>
+    <div className={stylesLocations.block}>
+      <div className={stylesLocations.text}>Added Locations:</div>
+      <ul className={stylesLocations.locations}>
+        <li className={stylesLocations.item}>Bali</li>
+        <li className={stylesLocations.item}>Bali</li>
+        <li className={stylesLocations.item}>Bali</li>
+        <li className={stylesLocations.item}>Bali</li>
+        <li className={stylesLocations.item}>Bali</li>
+        <li className={stylesLocations.item}>Bali</li>
+        <li className={stylesLocations.item}>Bali</li>
+        <li className={stylesLocations.item}>Bali</li>
+        <li className={stylesLocations.item}>Bali</li>
+        <li className={stylesLocations.item}>Bali</li>
+        <li className={stylesLocations.item}>Bali</li>
       </ul>
     </div>
   );

@@ -1,11 +1,11 @@
-import stylesAddCity from "./styles.module.scss";
+import stylesButtons from "./styles.module.scss";
 
-export default function Buttons() {
+export default function Buttons({ tab }) {
   return (
-    <div className={stylesAddCity.buttons}>
-      <button className={stylesAddCity.item}>Now</button>
-      <button className={stylesAddCity.item}>Details</button>
-      <button className={stylesAddCity.item}>Forecast</button>
+    <div className={stylesButtons.buttons}>
+      <button className={stylesButtons.button.active}>Now</button>
+      <button className={stylesButtons.button}>Details</button>
+      <button className={stylesButtons.button}>Forecast</button>
     </div>
   );
 }

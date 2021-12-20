@@ -6,11 +6,19 @@
   width: 100%;
 }
 
+.temp {
+  display: flex;
+}
+
 .degrees {
   font-family: "Roboto", sans-serif;
   font-size: 70px;
   line-height: 82px;
   margin: 20px 0 0 35px;
+}
+
+.celsius {
+  margin-top: 34px;
 }
 
 .cloud {
@@ -33,4 +41,10 @@
 .heart {
   border: none;
   background: none;
+  cursor: pointer;
+
+  :active {
+    fill: black;
+    transform: scale(0.98);
+  }
 }

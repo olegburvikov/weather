@@ -14,4 +14,12 @@
   top: -35px;
   left: 550px;
   cursor: pointer;
+
+  &:hover {
+    stroke: silver;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
 }

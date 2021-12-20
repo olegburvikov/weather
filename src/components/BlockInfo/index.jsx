@@ -1,22 +1,28 @@
-import stylesBlockInfo from "./styles.module.scss";
+import stylesInfo from "./styles.module.scss";
 import { ReactComponent as Cloud } from "../../assets/icons/cloud.svg";
 import { ReactComponent as Heart } from "../../assets/icons/heart.svg";
+import { ReactComponent as Deg } from "../../assets/icons/deg.svg";
 import Buttons from "../Buttons/index";
 
-export default function BlockInfo() {
+export default function BlockInfo({ activeTab, tabNow }) {
   return (
-    <div className={stylesBlockInfo.block}>
-      <div className={stylesBlockInfo.degrees}>14</div>
-      <div className={stylesBlockInfo.cloud}>
+    <div className={stylesInfo.block}>
+      <div className={stylesInfo.temp}>
+        <div className={stylesInfo.degrees}>{tabNow.degrees}</div>
+        <div className={stylesInfo.celsius}>
+          <Deg />
+        </div>
+      </div>
+      <div className={stylesInfo.cloud}>
         <Cloud />
       </div>
-      <div className={stylesBlockInfo.added}>
-        <div className={stylesBlockInfo.city}>Aktobe</div>
-        <button className={stylesBlockInfo.heart}>
+      <div className={stylesInfo.added}>
+        <div className={stylesInfo.city}>{tabNow.city}</div>
+        <button className={stylesInfo.heart}>
           <Heart />
         </button>
       </div>
-      <Buttons />
+      <Buttons tab={activeTab} />
     </div>
   );
 }

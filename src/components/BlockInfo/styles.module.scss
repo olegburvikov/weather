@@ -1,3 +1,7 @@
+* {
+  font-family: "Roboto", sans-serif;
+}
+
 .block {
   max-width: 300px;
   border: 1px solid black;
@@ -11,7 +15,6 @@
 }
 
 .degrees {
-  font-family: "Roboto", sans-serif;
   font-size: 70px;
   line-height: 82px;
   margin: 20px 0 0 35px;
@@ -21,8 +24,20 @@
   margin-top: 34px;
 }
 
+.icon {
+  display: flex;
+  justify-content: center;
+  height: 202px;
+  // margin-top: 20px;
+  // margin-bottom: 54px;
+}
+
 .cloud {
-  margin: 40px 110px 100px;
+  display: flex;
+  justify-content: center;
+  height: 205px;
+  // margin-top: 30px;
+  // margin-bottom: 116px;
 }
 
 .added {
@@ -33,7 +48,6 @@
 }
 
 .city {
-  font-family: "Roboto", sans-serif;
   font-size: 24px;
   line-height: 28px;
 }
@@ -47,4 +61,13 @@
     fill: black;
     transform: scale(0.98);
   }
+}
+
+.message {
+  text-align: center;
+  font-size: 18px;
+  line-height: 28px;
+  font-style: italic;
+  padding-top: 100px;
+  padding-bottom: 24px;
 }

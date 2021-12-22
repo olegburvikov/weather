@@ -1,14 +1,15 @@
 import styles from "./styles.module.scss";
 
-export default function Buttons({ actionButtons }) {
+export default function Buttons({ tabs, activeTab, onClick }) {
   return (
     <div className={styles.buttons}>
-      {actionButtons.map((item) => (
+      {tabs.map((tab) => (
         <button
-          key={item.label}
-          className={`${styles.button} ${styles.active}`}
+          key={tab}
+          onClick={() => onClick(tab)}
+          className={`${styles.button} ${tab === activeTab ? styles.active : ''}`}
         >
-          {item.label}
+          {tab}
         </button>
       ))}
     </div>

@@ -5,22 +5,14 @@ import BlockInfo from "./components/BlockInfo/index";
 import BlockLocations from "./components/BlockLocations/index";
 import { getWeatherCity } from "./services/api";
 import { useState } from "react";
-import { createId } from "./helpers/idRandom";
 
 function App() {
   const [value, setValue] = useState("");
 
-  const [activeTab, setActiveTab] = useState([
-    { label: "Now", state: true },
-    { label: "Details", state: false },
-    { label: "Forecast", state: false },
-  ]);
-
+  const [activeTab, setActiveTab] = useState("Now");
   const [weather, setWeather] = useState({});
-
   const [loading, setLoading] = useState(true);
-
-  const [list, setList] = useState([]);
+  const [favorites, setFavorites] = useState([]);
 
   function onInfoWeatherCity(e) {
     e.preventDefault();
@@ -28,36 +20,27 @@ function App() {
     getWeatherCity(value)
       .then((city) => {
         const { name, main, weather } = city;
-        const nowWeather = {
+        setWeather({
           city: name,
           degrees: Math.floor(main.temp - 273.15),
           icon: weather.map((item) => item.icon).join(),
-          id: createId(),
-        };
-
+        });
         setLoading(false);
-        setWeather(nowWeather);
+        setValue("");
       })
       .catch((err) =>
         alert(
           `${err}. Something went wrong! Maybe there is no such city? Try again!`
         )
       );
-    setValue("");
   }
 
-  function deleteClickLocation(locationId) {
-    setList(list.filter((item) => item.id !== locationId));
+  function handleDeleteClick(city) {
+    setFavorites(prevState => prevState.filter((item) => item !== city));
   }
 
-  function getClickWeatherCity(clickCity) {
-    let cityRenwe = null;
-
-    list.map((item) =>
-      item.city === clickCity ? (cityRenwe = { ...item, clickCity }) : null
-    );
-
-    setWeather(cityRenwe);
+  function handleCityClick() {
+    // ...
   }
 
   return (
@@ -71,15 +54,17 @@ function App() {
           />
           <div className={styles.wrapper}>
             <BlockInfo
+              isFavorite={favorites.includes(weather?.city)}
               loading={loading}
               weather={weather}
-              tabs={activeTab}
-              onClick={() => setList([...list, weather])}
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+              setFavorites={setFavorites}
             />
             <BlockLocations
-              list={list}
-              deleteClickLocation={deleteClickLocation}
-              getClickWeatherCity={getClickWeatherCity}
+              favorites={favorites}
+              onCityClick={handleCityClick}
+              onDeleteClick={handleDeleteClick}
             />
           </div>
         </div>

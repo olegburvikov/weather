@@ -2,24 +2,24 @@ import styles from "./styles.module.scss";
 import { ReactComponent as Remove } from "../../assets/icons/remove.svg";
 
 export default function BlockLocations({
-  list,
-  deleteClickLocation,
-  getClickWeatherCity,
+   favorites,
+   onCityClick,
+   onDeleteClick
 }) {
-  if (list.length) {
+  if (favorites.length) {
     return (
       <div className={styles.block}>
         <div className={styles.text}>Added Locations:</div>
         <ul className={styles.locations}>
-          {list.map((item) => (
+          {favorites.map((city) => (
             <li
-              onClick={() => getClickWeatherCity(item.city)}
-              key={item.id}
+              onClick={() => onCityClick(city)}
+              key={city}
               className={styles.li}
             >
-              {item.city}
+              {city}
               <button
-                onClick={() => deleteClickLocation(item.id)}
+                onClick={() => onDeleteClick(city)}
                 className={styles.remove}
               >
                 <Remove />

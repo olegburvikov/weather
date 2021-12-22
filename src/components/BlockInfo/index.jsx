@@ -4,7 +4,22 @@ import { ReactComponent as Heart } from "../../assets/icons/heart.svg";
 import { ReactComponent as Deg } from "../../assets/icons/deg.svg";
 import Buttons from "../Buttons/index";
 
-export default function BlockInfo({ loading, weather, tabs, onClick }) {
+const tabs = ['Now', 'Details', 'Fortcast']
+
+export default function BlockInfo({ loading, weather, activeTab, setActiveTab, setFavorites, isFavorite }) {
+
+  function handleTabClick(tab) {
+    setActiveTab(tab)
+  }
+
+  function handleHeartClick() {
+    if(isFavorite) {
+      setFavorites(prev => prev.filter(item => item !== weather.city))
+    } else {
+      setFavorites(prev => ([...prev, weather.city]))
+    }
+  }
+
   if (!loading) {
     return (
       <div className={styles.block}>
@@ -18,16 +33,16 @@ export default function BlockInfo({ loading, weather, tabs, onClick }) {
           <img
             src={`https://raw.githubusercontent.com/yuvraaaj/openweathermap-api-icons/master/icons/${weather.icon}.png`}
             alt="icon weather"
-          ></img>
+          />
         </div>
         <div className={styles.added}>
           <div className={styles.city}>{weather.city}</div>
-          <button onClick={onClick} className={styles.heart}>
+          <button onClick={handleHeartClick} className={`${styles.heart} ${isFavorite ? styles.active : ''}`}>
             <Heart />
           </button>
         </div>
 
-        <Buttons actionButtons={tabs} />
+        <Buttons tabs={tabs} activeTab={activeTab} onClick={handleTabClick} />
       </div>
     );
   } else {
@@ -39,7 +54,6 @@ export default function BlockInfo({ loading, weather, tabs, onClick }) {
             <Cloud />
           </div>
         </div>
-        <Buttons actionButtons={tabs} />
       </div>
     );
   }
